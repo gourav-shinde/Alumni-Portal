@@ -1,3 +1,4 @@
+# all set
 """
 Django settings for Alumni_Portal project.
 
