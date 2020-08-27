@@ -2,14 +2,13 @@
 {% block content %}
 {% load static %}
 
-<head>
+<head xmlns="http://www.w3.org/1999/html">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'home/style.css' %}">
 </head>
-
 
 <body>
     <section>
@@ -19,15 +18,20 @@
                 <h1>LET'S GET STARTED</h1>
             </div>
         </div>
-        <br class="form center ">
-            <br></br>
+        <br class="text-center">
+            <div class="text-center">
+                <br></br>
             <h3>What you are and what you want to register</h3>
             <br></br>
-            <div class="reg">
-                <button>Instititue</button>
-                <button>Student</button>
             </div>
-            <button id="next">Next <i style="font-size: 22px;" class="fa fa-angle-right" aria-hidden="true"></i></button>
+
+            <div class="reg">
+                <br>
+                <button type="button" class="btn btn-primary btn-lg" href="/register1"> Alumni </button>
+                <button type="button" class="btn btn-primary btn-lg" href="/register2"> Student </button>
+                </br>
+            </div>
     </section>
 </body>
+
 {% endblock %}
