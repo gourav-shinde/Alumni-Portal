@@ -17,30 +17,32 @@
 <body>
     <section>
 
-        <div class="icon"><img src="school.png" alt="">
+        <!--<div class="icon"><img src="/home/school.png" alt="">-->
+        <div class="icon"><img src="{% static 'home/school.png' %}" alt="">
             <div class="cont">
                 <h5>STEP 2 OF 3</h5>
                 <h1>TELL YOUR DETAIL TO VERIFY</h1>
             </div>
         </div>
 
-		<div class="signup-form">
+		<div class="signup-form" >
 		<br>
-
+            <form action="/register1/" method="post">
+        {% csrf_token %}
             <h4>Name</h4>
             <div class="name">
-                <input type="text" placeholder="First Name">
-                <input type="text" placeholder="Last Name">
+                <input type="text" name="first_name" placeholder="First Name">
+                <input type="text" name="last_name" placeholder="Last Name">
             </div>
 
             <h4>Graduation Year</h4>
             <div class="name">
-                <input type="text" placeholder="First Year">
-                <input type="text" placeholder="Last Year">
+                <input type="text" name="first_yr" placeholder="First Year">
+                <input type="text" name="last_yr" placeholder="Last Year">
             </div>
 
             <h4>Branch</h4>
-            <select name="Cars" id="Cars">
+            <select name="branch" id="branch">
                 <option value="">Computer Science</option>
                 <option value="">Information Technology</option>
                 <option value="">Electronics and Telecommunication</option>
@@ -51,26 +53,26 @@
             </select>
 
             <h4>Mobile No.</h4>
-            <input class="page2" type="number" >
+            <input type="text" input class="page2" name="mobile" type="number" >
 
             <h4>Email</h4>
-            <input class="page2" type="email" >
+            <input type="email" input class="page2"  name="email" type="email" >
 
 			<h4>User name</h4>
-	        <input class="page2" type="text" >
+	        <input type="username" input class="page2" name="user_name" type="text" >
 
 			<h4>Password</h4>
-	        <input class="page2" type="text" >
+	        <input type="password" input class="page2" name="password" type="text" >
 
 	        <h4>Confirm Password</h4>
-	        <input class="page2" type="text" >
+	        <input type="password" input class="page2" name="confirm_password" type="text" >
 
 	        <div class="text-center">
-	        <button type="submit" class="btn btn-primary">Register Now</button>
+	        <button type="submit"  class="btn btn-primary" >Register Now</button>
 	    	</div>
-            <br></br>
+            <br>
 
-        </form>
+            </form>
 
             <div class="text-center"><h2>Already have an account? </h2> <a href="{% url 'login' %}">Sign in</a></div>
 
