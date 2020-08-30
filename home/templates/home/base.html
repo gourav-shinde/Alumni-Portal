@@ -32,8 +32,18 @@
           <h3>ABOUT US</h3>
         </div>
         <div class="right">
-          <a href="/register"><h3>SIGN UP</h3></a>
+
+          {% if user.is_authenticated %}
+          <li>Hello, {{user.first_name}} </li>
+          <li><a href="/logout"><h3>Logout</h3></a></li>
+
+          {% else %}
+          <li><a href="/register"><h3>Register </h3></a></li>
+          <li><a href="{% url 'login' %}"><h3>Log In</h3></a></li>
+          {% endif %}
+<!--
           <button>GET STARTED</button>
+-->
         </div>
       </div>
 
