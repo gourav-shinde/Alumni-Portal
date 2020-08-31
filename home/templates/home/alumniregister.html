@@ -1,85 +1,63 @@
-{% extends 'home/base.html' %}
-{% block content %}
+{% extends 'home/base1.html' %}
+{% block content1 %}
 {% load static %}
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{% static 'home/style.css' %}">
-</head>
-<style>
-    ::placeholder{
-        color: #BEBEBE !important;
-    }
-</style>
 
-<body>
-    <section>
-
-        <!--<div class="icon"><img src="/home/school.png" alt="">-->
-        <div class="icon"><img src="{% static 'home/school.png' %}" alt="">
-            <div class="cont">
-                <h5>STEP 2 OF 3</h5>
-                <h1>TELL YOUR DETAIL TO VERIFY</h1>
+<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url({% static 'new/images/bg_1.jpg' %})">
+    <div class="container">
+        <div class="row align-items-end justify-content-center text-center">
+            <div class="col-lg-7">
+              <h2 class="mb-0">Register</h2>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
             </div>
         </div>
+    </div>
+</div>
 
-		<div class="signup-form" >
-		<br>
-            <form action="/register1/" method="post">
-        {% csrf_token %}
-            <h4>Name</h4>
-            <div class="name">
-                <input type="text" name="first_name" placeholder="First Name">
-                <input type="text" name="last_name" placeholder="Last Name">
+<div class="site-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="first_name">First Name</label>
+                            <input type="text" id="first_name" class="form-control form-control-lg">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" id="last_name" class="form-control form-control-lg">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" class="form-control form-control-lg">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control form-control-lg">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="pword">Password</label>
+                            <input type="password" id="pword" class="form-control form-control-lg">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="pword2">Re-type Password</label>
+                            <input type="password" id="pword2" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="text-center">
+                                <input type="submit" value="Register" class="btn btn-primary btn-lg px-5">
+                                <br></br>
+                                Already Have an Account
+                                <a href="{% url 'login' %}"><h4>Log In</h4></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <h4>Graduation Year</h4>
-            <div class="name">
-                <input type="text" name="first_yr" placeholder="First Year">
-                <input type="text" name="last_yr" placeholder="Last Year">
-            </div>
-
-            <h4>Branch</h4>
-            <select name="branch" id="branch">
-                <option value="">Computer Science</option>
-                <option value="">Information Technology</option>
-                <option value="">Electronics and Telecommunication</option>
-                <option value="">Civil</option>
-                <option value="">Electrical</option>
-                <option value="">Mechanical</option>
-                <option value="">Other</option>
-            </select>
-
-            <h4>Mobile No.</h4>
-            <input type="text" input class="page2" name="mobile" type="number" >
-
-            <h4>Email</h4>
-            <input type="email" input class="page2"  name="email" type="email" >
-
-			<h4>User name</h4>
-	        <input type="username" input class="page2" name="user_name" type="text" >
-
-			<h4>Password</h4>
-	        <input type="password" input class="page2" name="password" type="text" >
-
-	        <h4>Confirm Password</h4>
-	        <input type="password" input class="page2" name="confirm_password" type="text" >
-
-	        <div class="text-center">
-	        <button type="submit"  class="btn btn-primary" >Register Now</button>
-	    	</div>
-            <br>
-
-            </form>
-
-            <div class="text-center"><h2>Already have an account? </h2> <a href="{% url 'login' %}">Sign in</a></div>
-
         </div>
+</div>
 
-    </section>
-</body>
-   
+
 
 {% endblock %}
