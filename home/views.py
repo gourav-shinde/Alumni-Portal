@@ -5,7 +5,7 @@ from .models import Student, Alumni
 
 
 def home(request):
-    return render(request, 'home/home.html')
+    return render(request, 'home/home1.html')
 
 
 def register(request):
@@ -36,7 +36,7 @@ def register1(request):
         print("Student Data Added in Database")
         return render(request, 'home/registerfinal.html')
     else:
-        return render(request, 'home/studentregister.html')
+        return render(request, 'home/alumniregister.html')
 
 
 def register2(request):
@@ -74,14 +74,22 @@ def login_validate(request):
         if user is not None:
             print('User')
             login(request, user)
-            return redirect('home/login.html')
+            return redirect('/')
         else:
             print('Not User')
-            return redirect('home/home.html')
+            return redirect('home/home1.html')
     else:
-        return render(request, 'home/login.html')
+        return render(request, 'home/login1.html')
 
 
 def logout(request):
     auth.logout(request)
     return redirect('home')
+
+
+def contact(request):
+    return render(request, 'home/contact.html')
+
+
+def new(request):
+    return render(request, 'home/alumniregister.html')
