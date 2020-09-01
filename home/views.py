@@ -5,7 +5,7 @@ from .models import Student, Alumni
 
 
 def home(request):
-    return render(request, 'home/home1.html')
+    return render(request, 'home/home.html')
 
 
 def register(request):
@@ -77,9 +77,9 @@ def login_validate(request):
             return redirect('/')
         else:
             print('Not User')
-            return redirect('home/home1.html')
+            return redirect('home/home.html')
     else:
-        return render(request, 'home/login1.html')
+        return render(request, 'home/login.html')
 
 
 def logout(request):
@@ -91,5 +91,5 @@ def contact(request):
     return render(request, 'home/contact.html')
 
 
-def new(request):
-    return render(request, 'home/alumniregister.html')
+def test(request):
+    return render(request, 'home/test.html')
