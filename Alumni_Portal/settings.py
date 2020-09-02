@@ -34,7 +34,14 @@ local_apps =[
     'home',
 ]
 third_party_apps=[
-    'social_django',  # <-- Here social-auth-app-django
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.linkedin_oauth2',
+
 ]
 default_apps = [
     'django.contrib.admin',
@@ -42,11 +49,23 @@ default_apps = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'django.contrib.sites',
+
 ]
 
 
 INSTALLED_APPS = default_apps + local_apps + third_party_apps
+
+AUTHENTICATION_BACKENDS = [
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,7 +75,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware',  # <-- Here
 ]
 
 ROOT_URLCONF = 'Alumni_Portal.urls'
@@ -73,20 +91,11 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
-                'social_django.context_processors.backends',  # <-- Here
-                'social_django.context_processors.login_redirect', # <-- Here
             ],
         },
     },
 ]
 # social authentication
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.facebook.FacebookOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.github.GithubOAuth2',
-
-    'django.contrib.auth.backends.ModelBackend',
-)
 
 WSGI_APPLICATION = 'Alumni_Portal.wsgi.application'
 
@@ -138,12 +147,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_REDIRECT_URL = 'home'
-
-# fb autheintication setup
-SOCIAL_AUTH_FACEBOOK_KEY = '1214224118942529'  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = 'aaa4d23faf618909a19f109ddbaa2408'  # App Secret
-# end
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
+SITE_ID = 1
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/

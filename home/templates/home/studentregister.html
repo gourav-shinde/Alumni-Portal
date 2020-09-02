@@ -69,16 +69,17 @@
                                             <div class="text-center">
                                                 <input type="submit" value="Register" class="btn btn-primary btn-lg px-5">
                                                     <br><br>
-                                                {{ form_error}}
+                                                <div class="text-center">
+                                                    {{ form_errors }}
+                                                </div>
                                                 <p>Sign Up With</p>
 
                                                     <div class="ml-auto pd-5">
                                                         <div class="social-wrap">
-                                                             <a href="{% url 'social:begin' 'facebook' %}"><span class="icon-facebook"></span></a>
-                                                             <a href="#"><span class="icon-twitter"></span></a>
-                                                             <a href="#"><span class="icon-linkedin"></span></a>
-                                                             <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
-                                                             class="icon-menu h3"></span></a>
+                                                             <a href="/accounts/facebook/login" methods="Oauth2" ><span class="icon-facebook"></span></a>
+                                                             <a href="/accounts/google/login "  ><span class="icon-google"></span></a>
+                                                             <a href="#" methods="Oauth2"><span class="icon-linkedin"></span></a>
+
                                                         </div>
                                                     </div>
                                                 </div>

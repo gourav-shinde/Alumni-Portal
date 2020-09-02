@@ -73,14 +73,14 @@
 
                             {{ form_error}}
 
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="text-center">
-                                        <input type="submit" value="Register" class="btn btn-primary btn-lg px-5">
-                                            <br>
-                                            Already Have an Account
-                                            <a href="{% url 'login' %}"><h4>Log In</h4></a>
-                                        </div>
+                            <p>Sign Up With</p>
+
+                                <div class="ml-auto pd-5">
+                                    <div class="social-wrap">
+                                         <a href="/accounts/facebook/login" methods="Oauth2" ><span class="icon-facebook"></span></a>
+                                         <a href="/accounts/google/login "  ><span class="icon-google"></span></a>
+                                         <a href="#" methods="Oauth2"><span class="icon-linkedin"></span></a>
+
                                     </div>
                                 </div>
                             </div>

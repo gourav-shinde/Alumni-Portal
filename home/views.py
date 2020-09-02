@@ -5,9 +5,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-from django.views.generic import TemplateView
-from django.contrib.auth.mixins import LoginRequiredMixin
-
 from .decorators import unauthenticated_user
 from .forms import CreateUserForm
 
@@ -19,9 +16,6 @@ def register(request):
     return render(request, 'home/register1.html')
 
 # social authentication setting
-class HomeView(LoginRequiredMixin, TemplateView):
-    template_name = "home/home.html"
-
 @unauthenticated_user
 def register1(request):
     form = CreateUserForm()
@@ -75,7 +69,7 @@ def logout_validate(request):
 
 @login_required(login_url='/login')
 def contact(request):
-    return render(request, 'home/login.html')
+    return render(request, 'home/contact.html')
 
 
 def test(request):

@@ -12,8 +12,7 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('test/', views.test, name='test'),
     path('profile/', views.profile, name='profile'),
-
-    path('oauth/', include('social_django.urls', namespace='social')),  # <-- here
+    path('accounts/', include('allauth.urls')),
 
 
 ]

@@ -93,7 +93,7 @@
                 </li>
                 <li>
                     <a href="/contact" class="nav-link text-left">Contact</a>
-                  </li>
+                </li>
               </ul>                                                                                                                                                                                                                                                                                          </ul>
             </nav>
           </div>
@@ -101,7 +101,7 @@
             {% if user.is_authenticated %}
 
             <div class="col-lg-3 text-right" >
-                <a href="/profile" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Hello, {{ user.first_name }}</a>
+                <a href="/profile" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Hey, {{ user.first_name }}</a>
                 <a href="/logout" class="small mr-3"><span class="icon-unlock-alt"></span> Log Out</a>
             </div>
             {% else %}
