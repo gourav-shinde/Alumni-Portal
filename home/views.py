@@ -1,13 +1,14 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User, auth, AnonymousUser
+
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
-from .models import Student, Alumni
-from django.forms import inlineformset_factory
+
+from django.contrib.auth.decorators import login_required
+
+from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-from .models import *
 from .forms import CreateUserForm
 
 def home(request):
@@ -15,7 +16,13 @@ def home(request):
 
 
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('/')
     return render(request, 'home/register1.html')
+
+# social authentication setting
+class HomeView(LoginRequiredMixin, TemplateView):
+    template_name = "home/home.html"
 
 
 def register1(request):
@@ -29,7 +36,7 @@ def register1(request):
                 form.save()
                 user = form.cleaned_data.get('username')
                 messages.success(request, 'Account was created for ' + user)
-                return redirect('/')
+                return redirect('/login')
 
         context = {'form': form}
         return render(request, 'home/studentregister.html', context)
@@ -53,6 +60,8 @@ def register2(request):
 
 
 def login_validate(request):
+    if request.user.is_authenticated:
+        return redirect('/')
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -63,19 +72,26 @@ def login_validate(request):
             return redirect('/')
         else:
             print('Not User')
-            return redirect('home/home1.html')
+            messages.info(request,"Username or Password incorrect !")
+            return render(request, 'home/login.html',)
     else:
-        return render(request, 'home/login1.html')
+        return render(request, 'home/login.html')
 
 
-def logout(request):
-    auth.logout(request)
+def logout_validate(request):
+    logout(request)
     return redirect('home')
 
-
+@login_required(login_url='/login')
 def contact(request):
-    return render(request, 'home/contact.html')
+    return render(request, 'home/login.html')
 
 
 def test(request):
     return render(request, 'home/test.html')
+
+@login_required(login_url='/login')
+def profile(request):
+    return render(request, 'home/profile_page.html')
+
+
