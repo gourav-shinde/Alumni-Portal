@@ -48,3 +48,17 @@ class Alumni(models.Model):
 
     def __str__(self):
         return self.firstname + " " + self.lastname
+
+
+class Contact(models.Model):
+    Sr_No = models.AutoField(primary_key=True)
+    fname = models.CharField(max_length=20)
+    lname = models.CharField(max_length=20)
+    email = models.CharField(max_length=50, blank=True)
+    number = models.CharField(max_length=20, blank=True)
+    message = models.TextField()
+    time = models.DateTimeField(auto_now_add=True, blank=True)
+
+    def __str__(self):
+        return self.fname + " " + self.lname
+

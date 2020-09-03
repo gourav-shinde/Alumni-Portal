@@ -12,10 +12,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+from django.contrib.messages import constants as messages
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -28,12 +29,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
-local_apps =[
+local_apps = [
     'home',
 ]
-third_party_apps=[
+third_party_apps = [
 
     'allauth',
     'allauth.account',
@@ -53,7 +53,6 @@ default_apps = [
     'django.contrib.sites',
 
 ]
-
 
 INSTALLED_APPS = default_apps + local_apps + third_party_apps
 
@@ -99,7 +98,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Alumni_Portal.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -113,7 +111,6 @@ DATABASES = {
         'PASSWORD': '1234',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -133,7 +130,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -149,19 +145,28 @@ USE_TZ = True
 
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
-SITE_ID = 1
+SITE_ID = 2
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
 
+import socket
+
+socket.gethostbyname('www.google.com')
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 MAILER_EMAIL_BACKEND = EMAIL_BACKEND
-EMAIL_HOST = 'akash.ap4310@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_PASSWORD = '9921625908'
 EMAIL_HOST_USER = 'akash.ap4310@gmail.com'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+
+# for overwriting messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
+}
